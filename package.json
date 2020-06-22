@@ -1,0 +1,37 @@
+{
+  "name": "greeting",
+  "version": "0.1.0",
+  "main": "main.js",
+  "author": "game",
+  "description": "description",
+  "scripts": {
+    "dev": "electron .",
+    "build": "electron-builder --win --x64"
+  },
+  "dependencies": {
+    "electron-log": "^4.1.2",
+    "fs-extra": "^9.0.0",
+    "request": "^2.88.2",
+    "request-debug": "^0.2.0",
+    "ssl-root-cas": "^1.3.1",
+    "superagent": "^5.2.2",
+    "superagent-debugger": "^1.2.9",
+    "superagent-logger": "^1.1.0",
+    "superagent-proxy": "^2.0.0"
+  },
+  "devDependencies": {
+    "electron": "^8.2.5",
+    "electron-builder": "^22.6.0"
+  },
+  "build": {
+    "appId": "game",
+    "productName": "game",
+    "win": {
+      "icon": "app.ico",
+      "target": [
+        "nsis",
+        "zip"
+      ]
+    }
+  }
+}

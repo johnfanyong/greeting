@@ -1,0 +1,9 @@
+.login-panel {
+  margin: 100px auto;
+  width: 500px;
+}
+
+.login-panel input {
+  width: 75%;
+  margin: 0 auto;
+}

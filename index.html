@@ -1,0 +1,1084 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link href="./static/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./static/css/index.css" />
+    <link rel="stylesheet" href="./static/css/honeySwitch.css" />
+  </head>
+
+  <body>
+    <div class="game-tabs container-fluid" data-example-id="togglable-tabs">
+      <ul id="myTabs" class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+          <a
+            href="#redPackets"
+            id="redPackets-tab"
+            role="tab"
+            data-toggle="tab"
+            aria-controls="redPackets"
+            aria-expanded="true"
+            >红包助手</a
+          >
+        </li>
+        <li role="presentation">
+          <a
+            href="#autoBet"
+            role="tab"
+            id="autoBet-tab"
+            data-toggle="tab"
+            aria-controls="autoBet"
+            >自动下注</a
+          >
+        </li>
+        <li role="presentation">
+          <a
+            href="#accounts"
+            role="tab"
+            id="accounts-tab"
+            data-toggle="tab"
+            aria-controls="accounts"
+            >常用账号</a
+          >
+        </li>
+        <li role="presentation" class="dropdown">
+          <a
+            href="#about"
+            role="tab"
+            id="about-tab"
+            data-toggle="tab"
+            aria-controls="about"
+            >关于软件</a
+          >
+        </li>
+      </ul>
+      <div id="myTabContent" class="tab-content">
+        <div
+          role="tabpanel"
+          class="tab-pane fade in active"
+          id="redPackets"
+          aria-labelledby="redPackets-tab"
+        >
+          <div
+            class="btn-toolbar"
+            role="toolbar"
+            aria-label="Toolbar with button groups"
+          >
+            <button type="button" class="btn btn-success">
+              一键开始抢红包
+            </button>
+            <button type="button" class="btn btn-warning">一键登录</button>
+            <button type="button" class="btn btn-danger">一键停止</button>
+            <button type="button" class="btn btn-warning">一键转盘砸蛋</button>
+            <button type="button" class="btn btn-default">一键提现</button>
+            <div class="btn-group">
+              <button
+                type="button"
+                class="btn btn-primary dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                批量添加网站 <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="#" id="btn-show-website">手动添加</a></li>
+                <li><a href="#" id="btn-show-batch-website">批量添加</a></li>
+              </ul>
+            </div>
+            <button type="button" class="btn btn-default">编辑</button>
+            <button type="button" class="btn btn-default">设置</button>
+            <button type="button" class="btn btn-default">统计</button>
+          </div>
+        </div>
+        <div
+          role="tabpanel"
+          class="tab-pane fade"
+          id="autoBet"
+          aria-labelledby="autoBet-tab"
+        >
+          <form></form>
+          <div
+            class="btn-toolbar"
+            role="toolbar"
+            style="line-height: 30px;"
+            aria-label="Toolbar with button groups"
+          >
+            <button type="button" class="btn btn-success btn-sm">
+              添加组
+            </button>
+            <button type="button" class="btn btn-warning btn-sm">
+              保存数据
+            </button>
+            <div
+              class="form-group"
+              style="display: inline-block; width: 120px; margin-bottom: 0;"
+            >
+              <label for="account" class="col-sm-6 control-label text-right">
+                开关
+              </label>
+              <div class="col-sm-6">
+                <span class="switch-off" id="betStatus"></span>
+              </div>
+            </div>
+            <div
+              class="form-group"
+              style="display: inline-block; width: 200px; margin-bottom: 0;"
+            >
+              <label for="account" class="col-sm-4 control-label text-right">
+                开奖
+              </label>
+              <div class="col-sm-8">
+                <select class="form-control">
+                  <option>开奖1</option>
+                  <option>开奖2</option>
+                  <option>开奖3</option>
+                  <option>开奖4</option>
+                  <option>开奖5</option>
+                  <option>开奖6</option>
+                  <option>开奖7</option>
+                </select>
+              </div>
+            </div>
+            <div class="lottery-info">
+              <p>
+                秒速赛车/时时彩：期数：<span class="label label-info">0</span>
+                距离封盘仅剩：<span class="label label-info">0秒</span>
+                状态：<span class="label label-danger">已封盘</span>
+                <span class="label label-info"
+                  >开奖时间：2020-06-06 12：30：30</span
+                >
+              </p>
+              <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;幸运飞艇：期数：<span
+                  class="label label-info"
+                  >0</span
+                >
+                距离封盘仅剩：<span class="label label-info">0秒</span>
+                状态：<span class="label label-danger">已封盘</span>
+                <span class="label label-info"
+                  >开奖时间：2020-06-06 12：30：30</span
+                >
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-9" id="site-box">
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <form class="form-inline">
+                    <div class="form-group">
+                      <label>备用盘1</label>
+                    </div>
+                    <div class="form-group">
+                      <label class="require">网站</label>
+                      <select class="form-control">
+                        <option>网站1</option>
+                        <option>网站2</option>
+                        <option>网站3</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label class="require">线路</label>
+                      <select class="form-control">
+                        <option>线路1</option>
+                        <option>线路2</option>
+                        <option>线路3</option>
+                      </select>
+                      <span>10s</span>
+                    </div>
+                    <div class="form-group">
+                      余额：0 流水：0/0
+                    </div>
+                    <div class="form-group">
+                      余额：0 流水：0/0
+                    </div>
+                    <div class="form-group pull-right">
+                      <button class="btn btn-primary">未登录</button>
+                      <button class="btn btn-default" disabled="disabled">
+                        余额/流水
+                      </button>
+                      <button class="btn btn-default" disabled="disabled">
+                        提现
+                      </button>
+                      <button class="btn btn-default" disabled="disabled">
+                        充值
+                      </button>
+                      <div class="btn-group">
+                        <button
+                          type="button"
+                          class="btn btn-default dropdown-toggle"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          更多 <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a href="#">客服</a></li>
+                          <li class="disabled">
+                            <a href="#">充值记录</a>
+                          </li>
+                          <li class="disabled"><a href="#">提现记录</a></li>
+                          <li class="disabled"><a href="#">今日结算</a></li>
+                          <li class="disabled">
+                            <a href="#">今日未结算</a>
+                          </li>
+                          <li class="disabled"><a href="#">盈亏</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  组[一]
+                  <select class="form-control">
+                    <option>秒速赛车</option>
+                    <option>网站2</option>
+                    <option>网站3</option>
+                  </select>
+                  <select class="form-control">
+                    <option>双面盘</option>
+                    <option>网站2</option>
+                    <option>网站3</option>
+                  </select>
+                  <button class="btn btn-danger pull-right">
+                    删除
+                  </button>
+                </div>
+                <div class="panel-body">
+                  <form class="form-inline">
+                    <div class="game-group">
+                      <div class="site-group" data-index="1">
+                        <div class="form-group">
+                          <button class="btn btn-link btn-primary btn-site-add">新增</button>
+                          <span class="group-name">A1</span>
+                        </div>
+                        <div class="form-group">
+                          <label class="require">网站</label>
+                          <select class="form-control">
+                            <option>网站1</option>
+                            <option>网站2</option>
+                            <option>网站3</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label class="require">线路</label>
+                          <select class="form-control">
+                            <option>线路1</option>
+                            <option>线路2</option>
+                            <option>线路3</option>
+                          </select>
+                          <span>10s</span>
+                        </div>
+                        <div class="form-group">
+                          余额：0 流水：0/0
+                        </div>
+                        <div class="form-group">
+                          余额：0 流水：0/0
+                        </div>
+                        <div class="form-group pull-right">
+                          <button class="btn btn-primary">未登录</button>
+                          <button class="btn btn-default" disabled="disabled">
+                            余额/流水
+                          </button>
+                          <button class="btn btn-default" disabled="disabled">
+                            提现
+                          </button>
+                          <button class="btn btn-default" disabled="disabled">
+                            充值
+                          </button>
+                          <div class="btn-group">
+                            <button
+                              type="button"
+                              class="btn btn-default dropdown-toggle"
+                              data-toggle="dropdown"
+                              aria-haspopup="true"
+                              aria-expanded="false"
+                            >
+                              更多 <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">客服</a></li>
+                              <li class="disabled">
+                                <a href="#">充值记录</a>
+                              </li>
+                              <li class="disabled"><a href="#">提现记录</a></li>
+                              <li class="disabled"><a href="#">今日结算</a></li>
+                              <li class="disabled">
+                                <a href="#">今日未结算</a>
+                              </li>
+                              <li class="disabled"><a href="#">盈亏</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--A2-->
+                      <!--div class="site-group">
+                        <div class="form-group">
+                          <button class="btn btn-link btn-danger">
+                            删除
+                          </button>
+                          <span class="group-name">A2</span>
+                        </div>
+                        <div class="form-group">
+                          <label class="require">网站</label>
+                          <select class="form-control">
+                            <option>网站1</option>
+                            <option>网站2</option>
+                            <option>网站3</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label class="require">线路</label>
+                          <select class="form-control">
+                            <option>线路1</option>
+                            <option>线路2</option>
+                            <option>线路3</option>
+                          </select>
+                          <span>10s</span>
+                        </div>
+                        <div class="form-group">
+                          余额：0 流水：0/0
+                        </div>
+                        <div class="form-group">
+                          余额：0 流水：0/0
+                        </div>
+                        <div class="form-group pull-right">
+                          <button class="btn btn-primary">未登录</button>
+                          <button class="btn btn-default" disabled="disabled">
+                            余额/流水
+                          </button>
+                          <button class="btn btn-default" disabled="disabled">
+                            提现
+                          </button>
+                          <button class="btn btn-default" disabled="disabled">
+                            充值
+                          </button>
+                          <div class="btn-group">
+                            <button
+                              type="button"
+                              class="btn btn-default dropdown-toggle"
+                              data-toggle="dropdown"
+                              aria-haspopup="true"
+                              aria-expanded="false"
+                            >
+                              更多 <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">客服</a></li>
+                              <li class="disabled">
+                                <a href="#">充值记录</a>
+                              </li>
+                              <li class="disabled"><a href="#">提现记录</a></li>
+                              <li class="disabled"><a href="#">今日结算</a></li>
+                              <li class="disabled">
+                                <a href="#">今日未结算</a>
+                              </li>
+                              <li class="disabled"><a href="#">盈亏</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div-->
+                      <!--A2 end-->
+                    </div>
+                    <div class="game-group">
+                      <div class="site-group">
+                        <div class="form-group">
+                          <button class="btn btn-link btn-primary">新增</button>
+                          <span class="group-name">B1</span>
+                        </div>
+                        <div class="form-group">
+                          <label class="require">网站</label>
+                          <select class="form-control">
+                            <option>网站1</option>
+                            <option>网站2</option>
+                            <option>网站3</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label class="require">线路</label>
+                          <select class="form-control">
+                            <option>线路1</option>
+                            <option>线路2</option>
+                            <option>线路3</option>
+                          </select>
+                          <span>10s</span>
+                        </div>
+                        <div class="form-group">
+                          余额：0 流水：0/0
+                        </div>
+                        <div class="form-group">
+                          余额：0 流水：0/0
+                        </div>
+                        <div class="form-group pull-right">
+                          <button class="btn btn-primary">未登录</button>
+                          <button class="btn btn-default" disabled="disabled">
+                            余额/流水
+                          </button>
+                          <button class="btn btn-default" disabled="disabled">
+                            提现
+                          </button>
+                          <button class="btn btn-default" disabled="disabled">
+                            充值
+                          </button>
+                          <div class="btn-group">
+                            <button
+                              type="button"
+                              class="btn btn-default dropdown-toggle"
+                              data-toggle="dropdown"
+                              aria-haspopup="true"
+                              aria-expanded="false"
+                            >
+                              更多 <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">客服</a></li>
+                              <li class="disabled">
+                                <a href="#">充值记录</a>
+                              </li>
+                              <li class="disabled"><a href="#">提现记录</a></li>
+                              <li class="disabled"><a href="#">今日结算</a></li>
+                              <li class="disabled">
+                                <a href="#">今日未结算</a>
+                              </li>
+                              <li class="disabled"><a href="#">盈亏</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--A2-->
+                      <div class="site-group">
+                        <div class="form-group">
+                          <button class="btn btn-link btn-danger">
+                            删除
+                          </button>
+                          <span class="group-name">B2</span>
+                        </div>
+                        <div class="form-group">
+                          <label class="require">网站</label>
+                          <select class="form-control">
+                            <option>网站1</option>
+                            <option>网站2</option>
+                            <option>网站3</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label class="require">线路</label>
+                          <select class="form-control">
+                            <option>线路1</option>
+                            <option>线路2</option>
+                            <option>线路3</option>
+                          </select>
+                          <span>10s</span>
+                        </div>
+                        <div class="form-group">
+                          余额：0 流水：0/0
+                        </div>
+                        <div class="form-group">
+                          余额：0 流水：0/0
+                        </div>
+                        <div class="form-group pull-right">
+                          <button class="btn btn-primary">未登录</button>
+                          <button class="btn btn-default" disabled="disabled">
+                            余额/流水
+                          </button>
+                          <button class="btn btn-default" disabled="disabled">
+                            提现
+                          </button>
+                          <button class="btn btn-default" disabled="disabled">
+                            充值
+                          </button>
+                          <div class="btn-group">
+                            <button
+                              type="button"
+                              class="btn btn-default dropdown-toggle"
+                              data-toggle="dropdown"
+                              aria-haspopup="true"
+                              aria-expanded="false"
+                            >
+                              更多 <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">客服</a></li>
+                              <li class="disabled">
+                                <a href="#">充值记录</a>
+                              </li>
+                              <li class="disabled"><a href="#">提现记录</a></li>
+                              <li class="disabled"><a href="#">今日结算</a></li>
+                              <li class="disabled">
+                                <a href="#">今日未结算</a>
+                              </li>
+                              <li class="disabled"><a href="#">盈亏</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="panel-footer">
+                  <div class="pull-right">
+                    <form class="form-inline">
+                      <div class="form-group">
+                        <label for="">剩余目标流水</label>
+                        <input class="form-control" type="text" />
+                      </div>
+                      <div class="form-group">
+                        <label for="">单注区间金额</label>
+                        <input class="form-control" type="text" />
+                      </div>
+                      <div class="form-group">
+                        <label for="">至</label>
+                        <input class="form-control" type="text" />
+                      </div>
+                      <div class="form-group">
+                        <label for="">注数</label>
+                        <input class="form-control" type="text" />
+                      </div>
+                      <div class="form-group">
+                        <label for="">状态</label>
+                        <span class="label label-danger">未启动</span>
+                      </div>
+                      <div class="form-group">
+                        <button class="btn btn-primary">开始</button>
+                        <button class="btn btn-danger">停止</button>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  组[二]
+                  <select class="form-control">
+                    <option>秒速赛车</option>
+                    <option>网站2</option>
+                    <option>网站3</option>
+                  </select>
+                  <select class="form-control">
+                    <option>双面盘</option>
+                    <option>网站2</option>
+                    <option>网站3</option>
+                  </select>
+                  <button class="btn btn-danger pull-right">
+                    删除
+                  </button>
+                </div>
+                <div class="panel-body">
+                  <form class="form-inline">
+                    <div class="game-group">
+                      <div class="site-group">
+                        <div class="form-group">
+                          <button class="btn btn-link btn-primary">新增</button>
+                          <span class="group-name">A1</span>
+                        </div>
+                        <div class="form-group">
+                          <label class="require">网站</label>
+                          <select class="form-control">
+                            <option>网站1</option>
+                            <option>网站2</option>
+                            <option>网站3</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label class="require">线路</label>
+                          <select class="form-control">
+                            <option>线路1</option>
+                            <option>线路2</option>
+                            <option>线路3</option>
+                          </select>
+                          <span>10s</span>
+                        </div>
+                        <div class="form-group">
+                          余额：0 流水：0/0
+                        </div>
+                        <div class="form-group">
+                          余额：0 流水：0/0
+                        </div>
+                        <div class="form-group pull-right">
+                          <button class="btn btn-primary">未登录</button>
+                          <button class="btn btn-default" disabled="disabled">
+                            余额/流水
+                          </button>
+                          <button class="btn btn-default" disabled="disabled">
+                            提现
+                          </button>
+                          <button class="btn btn-default" disabled="disabled">
+                            充值
+                          </button>
+                          <div class="btn-group">
+                            <button
+                              type="button"
+                              class="btn btn-default dropdown-toggle"
+                              data-toggle="dropdown"
+                              aria-haspopup="true"
+                              aria-expanded="false"
+                            >
+                              更多 <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">客服</a></li>
+                              <li class="disabled">
+                                <a href="#">充值记录</a>
+                              </li>
+                              <li class="disabled"><a href="#">提现记录</a></li>
+                              <li class="disabled"><a href="#">今日结算</a></li>
+                              <li class="disabled">
+                                <a href="#">今日未结算</a>
+                              </li>
+                              <li class="disabled"><a href="#">盈亏</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--A2-->
+                      <div class="site-group">
+                        <div class="form-group">
+                          <button class="btn btn-link btn-danger">
+                            删除
+                          </button>
+                          <span class="group-name">A2</span>
+                        </div>
+                        <div class="form-group">
+                          <label class="require">网站</label>
+                          <select class="form-control">
+                            <option>网站1</option>
+                            <option>网站2</option>
+                            <option>网站3</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label class="require">线路</label>
+                          <select class="form-control">
+                            <option>线路1</option>
+                            <option>线路2</option>
+                            <option>线路3</option>
+                          </select>
+                          <span>10s</span>
+                        </div>
+                        <div class="form-group">
+                          余额：0 流水：0/0
+                        </div>
+                        <div class="form-group">
+                          余额：0 流水：0/0
+                        </div>
+                        <div class="form-group pull-right">
+                          <button class="btn btn-primary">未登录</button>
+                          <button class="btn btn-default" disabled="disabled">
+                            余额/流水
+                          </button>
+                          <button class="btn btn-default" disabled="disabled">
+                            提现
+                          </button>
+                          <button class="btn btn-default" disabled="disabled">
+                            充值
+                          </button>
+                          <div class="btn-group">
+                            <button
+                              type="button"
+                              class="btn btn-default dropdown-toggle"
+                              data-toggle="dropdown"
+                              aria-haspopup="true"
+                              aria-expanded="false"
+                            >
+                              更多 <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">客服</a></li>
+                              <li class="disabled">
+                                <a href="#">充值记录</a>
+                              </li>
+                              <li class="disabled"><a href="#">提现记录</a></li>
+                              <li class="disabled"><a href="#">今日结算</a></li>
+                              <li class="disabled">
+                                <a href="#">今日未结算</a>
+                              </li>
+                              <li class="disabled"><a href="#">盈亏</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="game-group">
+                      <div class="site-group">
+                        <div class="form-group">
+                          <button class="btn btn-link btn-primary">新增</button>
+                          <span class="group-name">B1</span>
+                        </div>
+                        <div class="form-group">
+                          <label class="require">网站</label>
+                          <select class="form-control">
+                            <option>网站1</option>
+                            <option>网站2</option>
+                            <option>网站3</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label class="require">线路</label>
+                          <select class="form-control">
+                            <option>线路1</option>
+                            <option>线路2</option>
+                            <option>线路3</option>
+                          </select>
+                          <span>10s</span>
+                        </div>
+                        <div class="form-group">
+                          余额：0 流水：0/0
+                        </div>
+                        <div class="form-group">
+                          余额：0 流水：0/0
+                        </div>
+                        <div class="form-group pull-right">
+                          <button class="btn btn-primary">未登录</button>
+                          <button class="btn btn-default" disabled="disabled">
+                            余额/流水
+                          </button>
+                          <button class="btn btn-default" disabled="disabled">
+                            提现
+                          </button>
+                          <button class="btn btn-default" disabled="disabled">
+                            充值
+                          </button>
+                          <div class="btn-group">
+                            <button
+                              type="button"
+                              class="btn btn-default dropdown-toggle"
+                              data-toggle="dropdown"
+                              aria-haspopup="true"
+                              aria-expanded="false"
+                            >
+                              更多 <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">客服</a></li>
+                              <li class="disabled">
+                                <a href="#">充值记录</a>
+                              </li>
+                              <li class="disabled"><a href="#">提现记录</a></li>
+                              <li class="disabled"><a href="#">今日结算</a></li>
+                              <li class="disabled">
+                                <a href="#">今日未结算</a>
+                              </li>
+                              <li class="disabled"><a href="#">盈亏</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!--A2-->
+                      <div class="site-group">
+                        <div class="form-group">
+                          <button class="btn btn-link btn-danger">
+                            删除
+                          </button>
+                          <span class="group-name">B2</span>
+                        </div>
+                        <div class="form-group">
+                          <label class="require">网站</label>
+                          <select class="form-control">
+                            <option>网站1</option>
+                            <option>网站2</option>
+                            <option>网站3</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                          <label class="require">线路</label>
+                          <select class="form-control">
+                            <option>线路1</option>
+                            <option>线路2</option>
+                            <option>线路3</option>
+                          </select>
+                          <span>10s</span>
+                        </div>
+                        <div class="form-group">
+                          余额：0 流水：0/0
+                        </div>
+                        <div class="form-group">
+                          余额：0 流水：0/0
+                        </div>
+                        <div class="form-group pull-right">
+                          <button class="btn btn-primary">未登录</button>
+                          <button class="btn btn-default" disabled="disabled">
+                            余额/流水
+                          </button>
+                          <button class="btn btn-default" disabled="disabled">
+                            提现
+                          </button>
+                          <button class="btn btn-default" disabled="disabled">
+                            充值
+                          </button>
+                          <div class="btn-group">
+                            <button
+                              type="button"
+                              class="btn btn-default dropdown-toggle"
+                              data-toggle="dropdown"
+                              aria-haspopup="true"
+                              aria-expanded="false"
+                            >
+                              更多 <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">客服</a></li>
+                              <li class="disabled">
+                                <a href="#">充值记录</a>
+                              </li>
+                              <li class="disabled"><a href="#">提现记录</a></li>
+                              <li class="disabled"><a href="#">今日结算</a></li>
+                              <li class="disabled">
+                                <a href="#">今日未结算</a>
+                              </li>
+                              <li class="disabled"><a href="#">盈亏</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="panel-footer">
+                  <div class="pull-right">
+                    <form class="form-inline">
+                      <div class="form-group">
+                        <label for="">剩余目标流水</label>
+                        <input class="form-control" type="text" />
+                      </div>
+                      <div class="form-group">
+                        <label for="">单注区间金额</label>
+                        <input class="form-control" type="text" />
+                      </div>
+                      <div class="form-group">
+                        <label for="">至</label>
+                        <input class="form-control" type="text" />
+                      </div>
+                      <div class="form-group">
+                        <label for="">注数</label>
+                        <input class="form-control" type="text" />
+                      </div>
+                      <div class="form-group">
+                        <label for="">状态</label>
+                        <span class="label label-danger">未启动</span>
+                      </div>
+                      <div class="form-group">
+                        <button class="btn btn-primary">开始</button>
+                        <button class="btn btn-danger">停止</button>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="panel panel-default">
+                <div class="panel-heading">运行日志</div>
+                <div class="panel-body">
+                  <ul class="list-group">
+                    <li class="list-group-item">20:12:30 准备就绪</li>
+                    <li class="list-group-item">20:12:30 准备就绪</li>
+                    <li class="list-group-item">20:12:30 准备就绪</li>
+                    <li class="list-group-item">20:12:30 准备就绪</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          role="tabpanel"
+          class="tab-pane fade"
+          id="accounts"
+          aria-labelledby="accounts-tab"
+        >
+          <div class="btn-group">
+            <button
+              class="btn btn-primary"
+              id="btn-add-account"
+              data-toggle="modal"
+              data-target="#accountWin"
+            >
+              添加
+            </button>
+          </div>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>账号</th>
+                <th>密码</th>
+                <th>取款密码</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="accountBody"></tbody>
+          </table>
+        </div>
+        <div
+          role="tabpanel"
+          class="tab-pane fade"
+          id="about"
+          aria-labelledby="about-tab"
+        >
+          <div class="panel panel-primary">
+            <div class="panel-heading">授权信息</div>
+            <div class="panel-body">
+              <p>到期时间：2020-08-08</p>
+              <p>授权码：xxxxxxxxxxxxxxxxxxxxxxx</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="accountWin" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">添加账号</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal" id="accountForm">
+              <div class="form-group">
+                <label for="account" class="col-sm-2 control-label require">
+                  账号
+                </label>
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="account"
+                    placeholder="登陆账号"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="password" class="col-sm-2 control-label">
+                  密码
+                </label>
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="password"
+                    placeholder="登录密码"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="moneyPassword" class="col-sm-2 control-label"
+                  >取款密码</label
+                >
+                <div class="col-sm-10">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="moneyPassword"
+                    placeholder="取款密码"
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              取消
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="btn-store-account"
+            >
+              确定
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="websiteWin" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">批量添加网站</h4>
+          </div>
+          <div class="modal-body">
+            <form class="form-horizontal" id="websiteForm">
+              <div class="form-group">
+                <label for="account" class="col-sm-2 control-label require">
+                  选择网站
+                </label>
+                <div class="col-sm-10">
+                  <input type="checkbox" id="websiteAll" /> 全选
+                  <br />
+                  <label class="checkbox-inline">
+                    <input
+                      type="checkbox"
+                      name="websites"
+                      id="website1"
+                      value="website1"
+                    />盛大娱乐
+                  </label>
+                  <label class="checkbox-inline">
+                    <input
+                      type="checkbox"
+                      name="websites"
+                      id="website2"
+                      value="website2"
+                    />盛天集团
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="password" class="col-sm-2 control-label require">
+                  账号
+                </label>
+                <div class="col-sm-10">
+                  <select class="form-control" id="websiteAccount"> </select>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              取消
+            </button>
+            <button type="button" class="btn btn-info" id="btn-update-website">
+              更新网站信息
+            </button>
+            <button type="button" class="btn btn-primary" id="btn-add-website">
+              确定
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      window.$ = window.jQuery = require("./static/js/jquery.1.12.4.min.js");
+    </script>
+    <!--script src="./static/js/jquery.1.12.4.min.js"></script-->
+    <script src="./static/js/honeySwitch.js"></script>
+    <script src="./static/js/bootstrap.min.js"></script>
+    <script>
+      require("./render/index.js");
+    </script>
+  </body>
+</html>

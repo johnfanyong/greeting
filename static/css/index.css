@@ -1,0 +1,48 @@
+.game-tabs {
+  padding: 10px;
+}
+.tab-content {
+  margin-top: 10px;
+}
+form .require::after {
+  content: "*";
+  float: right;
+  color: brown;
+}
+.lottery-info {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.lottery-info p {
+  margin: 0;
+  line-height: 1.3;
+}
+.form-inline {
+  margin: 0;
+}
+
+.panel-heading .form-control {
+  display: inline-block;
+  width: 180px;
+}
+.panel-heading,
+.panel-footer {
+  padding: 5px 15px;
+}
+
+.panel-heading .form-control,
+.panel-footer .form-control {
+  display: inline-block;
+  width: 100px;
+}
+.game-group {
+  border-bottom: 1px solid #ccc;
+}
+.game-group,
+.site-group {
+  margin-bottom: 5px;
+}
+.btn-link.btn-danger {
+  color: #d9534f;
+}

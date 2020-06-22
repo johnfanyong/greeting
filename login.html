@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link href="./static/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./static/css/login.css" />
+  </head>
+
+  <body>
+    <a href="./index.html">index.html</a>
+    <a href="./test.html">test.html</a>
+    <div class="panel panel-default login-panel" style="margin: 0 auto;">
+      <div class="panel-heading text-center">授权码登录</div>
+      <div class="panel-body">
+        <div class="form-horizontal" role="form">
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              id="licenseCode"
+              placeholder="请输入授权码"
+            />
+          </div>
+          <div class="form-group text-center">
+            <button id="btn_submit" class="btn btn-primary">登录</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      require("./render/login.js");
+    </script>
+  </body>
+</html>
