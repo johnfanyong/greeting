@@ -230,7 +230,7 @@
                   </form>
                 </div>
               </div>
-              <div class="panel panel-default">
+              <div class="panel panel-default" data-index="1">
                 <div class="panel-heading">
                   组[一]
                   <select class="form-control">
@@ -250,9 +250,14 @@
                 <div class="panel-body">
                   <form class="form-inline">
                     <div class="game-group">
-                      <div class="site-group" data-index="1">
+                      <div class="site-group" data-index="1" data-group="A">
                         <div class="form-group">
-                          <button class="btn btn-link btn-primary btn-site-add">新增</button>
+                          <button
+                            class="btn btn-link btn-primary btn-site-add"
+                            type="button"
+                          >
+                            新增
+                          </button>
                           <span class="group-name">A1</span>
                         </div>
                         <div class="form-group">
@@ -385,9 +390,14 @@
                       <!--A2 end-->
                     </div>
                     <div class="game-group">
-                      <div class="site-group">
+                      <div class="site-group" data-index="1" data-group="B">
                         <div class="form-group">
-                          <button class="btn btn-link btn-primary">新增</button>
+                          <button
+                            class="btn btn-link btn-primary btn-site-add"
+                            type="button"
+                          >
+                            新增
+                          </button>
                           <span class="group-name">B1</span>
                         </div>
                         <div class="form-group">
@@ -450,8 +460,8 @@
                         </div>
                       </div>
 
-                      <!--A2-->
-                      <div class="site-group">
+                      <!--B2-->
+                      <!--div class="site-group">
                         <div class="form-group">
                           <button class="btn btn-link btn-danger">
                             删除
@@ -516,7 +526,7 @@
                             </ul>
                           </div>
                         </div>
-                      </div>
+                      </div-->
                     </div>
                   </form>
                 </div>

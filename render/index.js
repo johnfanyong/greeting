@@ -19,9 +19,18 @@ $(function () {
       saveAccount();
     });
     $("#site-box").delegate(".btn-site-add", "click", function () {
-      var index = $(this).parents(".site-group").data("index");
-      console.log(index);
-      //addGroupSite();
+      var groupIndex = $(this).parents(".panel-default").data("index");
+      var subGroupIndex = $(this).parents(".site-group").data("index");
+      var subGroupName = $(this).parents(".site-group").data("group");
+      var gameGroup = $(this).parents(".game-group");
+
+      groupIndex *= 1;
+      subGroupIndex *= 1;
+      subGroupIndex++;
+      console.log("groupIndex", groupIndex);
+      console.log("subGroupIndex", subGroupIndex);
+      console.log("subGroupName", subGroupName);
+      addGroupSite(gameGroup, subGroupIndex, subGroupName);
     });
     switchEvent(
       "#betStatus",
@@ -73,73 +82,75 @@ $(function () {
     accountList.push(params);
     saveData("accountList", accountList);
   }
-  function addGroupSite() {
-    var site = `<div class="site-group">
-                        <div class="form-group">
-                          <button class="btn btn-link btn-danger">
-                            删除
-                          </button>
-                          <span class="group-name">A2</span>
-                        </div>
-                        <div class="form-group">
-                          <label class="require">网站</label>
-                          <select class="form-control">
-                            <option>网站1</option>
-                            <option>网站2</option>
-                            <option>网站3</option>
-                          </select>
-                        </div>
-                        <div class="form-group">
-                          <label class="require">线路</label>
-                          <select class="form-control">
-                            <option>线路1</option>
-                            <option>线路2</option>
-                            <option>线路3</option>
-                          </select>
-                          <span>10s</span>
-                        </div>
-                        <div class="form-group">
-                          余额：0 流水：0/0
-                        </div>
-                        <div class="form-group">
-                          余额：0 流水：0/0
-                        </div>
-                        <div class="form-group pull-right">
-                          <button class="btn btn-primary">未登录</button>
-                          <button class="btn btn-default" disabled="disabled">
-                            余额/流水
-                          </button>
-                          <button class="btn btn-default" disabled="disabled">
-                            提现
-                          </button>
-                          <button class="btn btn-default" disabled="disabled">
-                            充值
-                          </button>
-                          <div class="btn-group">
-                            <button
-                              type="button"
-                              class="btn btn-default dropdown-toggle"
-                              data-toggle="dropdown"
-                              aria-haspopup="true"
-                              aria-expanded="false"
-                            >
-                              更多 <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                              <li><a href="#">客服</a></li>
-                              <li class="disabled">
-                                <a href="#">充值记录</a>
-                              </li>
-                              <li class="disabled"><a href="#">提现记录</a></li>
-                              <li class="disabled"><a href="#">今日结算</a></li>
-                              <li class="disabled">
-                                <a href="#">今日未结算</a>
-                              </li>
-                              <li class="disabled"><a href="#">盈亏</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>`;
+  function addGroupSite(gameGroup, subGroupIndex, subGroupName) {
+    var site = `<div class="site-group" data-index="${subGroupIndex}" data-group="${subGroupName}">
+                  <div class="form-group">
+                    <button class="btn btn-link btn-danger">
+                      删除
+                    </button>
+                    <span class="group-name">${subGroupName}${subGroupIndex}</span>
+                  </div>
+                  <div class="form-group">
+                    <label class="require">网站</label>
+                    <select class="form-control">
+                      <option>网站1</option>
+                      <option>网站2</option>
+                      <option>网站3</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="require">线路</label>
+                    <select class="form-control">
+                      <option>线路1</option>
+                      <option>线路2</option>
+                      <option>线路3</option>
+                    </select>
+                    <span>10s</span>
+                  </div>
+                  <div class="form-group">
+                    余额：0 流水：0/0
+                  </div>
+                  <div class="form-group">
+                    余额：0 流水：0/0
+                  </div>
+                  <div class="form-group pull-right">
+                    <button class="btn btn-primary">未登录</button>
+                    <button class="btn btn-default" disabled="disabled">
+                      余额/流水
+                    </button>
+                    <button class="btn btn-default" disabled="disabled">
+                      提现
+                    </button>
+                    <button class="btn btn-default" disabled="disabled">
+                      充值
+                    </button>
+                    <div class="btn-group">
+                      <button
+                        type="button"
+                        class="btn btn-default dropdown-toggle"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        更多 <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">客服</a></li>
+                        <li class="disabled">
+                          <a href="#">充值记录</a>
+                        </li>
+                        <li class="disabled"><a href="#">提现记录</a></li>
+                        <li class="disabled"><a href="#">今日结算</a></li>
+                        <li class="disabled">
+                          <a href="#">今日未结算</a>
+                        </li>
+                        <li class="disabled"><a href="#">盈亏</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>`;
+    $(gameGroup).append(site);
+    console.log(site);
   }
   function saveData(key, value) {
     localStorage.setItem(key, JSON.stringify(value));
