@@ -46,3 +46,23 @@ form .require::after {
 .btn-link.btn-danger {
   color: #d9534f;
 }
+
+.red-packets .website-list {
+  margin-top: 10px;
+}
+.red-packets .website-list .site-name， .red-packets .website-list .site-addr,
+.red-packets .website-list .site-info,
+.red-packets .website-list .site-status {
+  font-size: 14px;
+  line-height: 1;
+}
+.red-packets .website-list .operation {
+  float: right;
+}
+.site-log {
+  border-top: 1px solid #ddd;
+  padding: 5px;
+  margin-top: 10px;
+  height: 100px;
+  overflow-y: auto;
+}
