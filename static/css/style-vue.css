@@ -1,0 +1,13 @@
+#app {
+  height: 100vh;
+  padding: 10px;
+}
+#app .ivu-tabs {
+  height: 100%;
+}
+#app .btn-toolbar {
+  margin-bottom: 10px;
+}
+.card-opration {
+  float: right;
+}
