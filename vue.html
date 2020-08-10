@@ -78,20 +78,20 @@
       <i-form :model="loginForm" :label-width="80">
         <form-item label="username">
           <i-input
-            v-model="loginForm.name"
+            v-model="loginForm.username"
             placeholder="Enter something..."
           ></i-input>
         </form-item>
         <form-item label="pass">
           <i-input
-            v-model="loginForm.pass"
+            v-model="loginForm.password"
             placeholder="Enter something..."
           ></i-input>
         </form-item>
         <form-item label="code">
           <i-input
             style="width: 100px;"
-            v-model="loginForm.code"
+            v-model="loginForm.validatecode"
             placeholder="Enter something..."
           ></i-input
           ><img :src="codeSrc" alt="" srcset="" />
@@ -102,6 +102,7 @@
       </i-form>
     </div>
     <script src="./static/js/util.js"></script>
+    <script src="./static/js/qs.min.js"></script>
     <script src="./static/js/axios.min.js"></script>
     <script src="./static/js/app.js"></script>
   </body>

@@ -6,6 +6,7 @@ const superagent = require("superagent");
 const superdebug = require("superagent-debugger");
 const logger = require("superagent-logger");
 const request = require("request");
+const qs = require("qs");
 const fs = require("fs-extra");
 const browserMsg = {
   "User-Agent":
@@ -24,11 +25,12 @@ new Vue({
   data: {
     visible: false,
     codeSrc: "",
-    checkCode: "",
     loginForm: {
-      name: "zhangsanfeng",
-      pass: "qwe123456",
-      code: "",
+      username: "zhangsanfeng",
+      password: "qwe123456",
+      checkcode: "",
+      sitekey: "sd7799",
+      validatecode: "",
     },
     cards: [
       {
@@ -44,15 +46,17 @@ new Vue({
     show: function () {
       this.visible = true;
     },
-    validateCode() {
+    validateCode(imageBase64) {
+      let v = this;
       axios
         .post("http://139.196.138.6/api/code/parse/v1", {
-          picBase64:
-            "/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAUADwDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD2ANdzOUtbKR8EjzJj5UYI+vzEehCkHPXrjPstQ0TULtLebVLq4llcxxSRRTW9s7DOVjkGFc8dN7dDjHSt3VrKfUvDN9Y2swguLmzkhilP8DMhAb8Cc1yOsX+r3I8O6KPD7aYj6ja7zJcRMNsLCUiEIxJGI+rBcDtk4qIwikJI66+vdO0W2i+0iQg/JGkcLzyvgdlUM7e5wfejSNT0vXbEXumyRzwE7SfLKlTwcMrAFTgg4IHUUutT3FvYhrbUbCwlLgCW+iMkZ4PGBInP49jxXHeE/E/maRNPb2VzqOp3dzI91NGNkDyofKyGIG1fLjQqME4KgknJqrJDOmXxJob3yWgdw0knlRytaSLC79AqylfLJPYBuam1nWtH0C387UpUhXaz4WJpGKryzbVBOB3OOK4bVNY8VT6/pttqWl2smmzXfmQ2sEgjl3xAyoXcswZVKA8BOdvrg3/FHiHU5dKis7rQJIoru6ghcxXCysU8wM4Cgckor0rxA73yYv8Anmn/AHyKPJi/55p/3yKybHxRpd7OtsZXtrs/8u90hjcHOAOeCTkEAEnmtmnZAQGGO5sTBMgeKSLY6noykYIry7WruTw54mni0stG8KhFnnle5l2sqsVDTM5Vc9lwPXOBRRQtgNSHwfpGsrHq2ppc3V7doksrtdSIGyo42oQpA7Ag8cV0E2mWU+mf2c9ugs9qoIk+QKBjGMYxjAxjpiiiuWbdyWQafoOn6bObiCOZ5yuzzrm4knkC5ztDSMxAyBwDjgVBqPhfTdUvVu7ptQMyMHTytSuIlRtpXKqjhVOCRkAdT6miipuxF59NtJLBLKaIzQIoUec7SN0xncxLE475z71TGglBti1fVoYhwkcd0QqDsBx0FFFXBsaP/9k=",
+          picBase64: imageBase64,
           type: "NUMBER_ONLY",
         })
         .then((response) => {
-          console.log(response);
+          if (response.status === 200 && response.data.code === 0) {
+            v.loginForm.validatecode = response.data.data;
+          }
         })
         .catch(function (error) {
           // 请求失败处理
@@ -61,66 +65,40 @@ new Vue({
     },
     loadImageCode() {
       let v = this;
-      superagent
-        .get(urls.indexUrl)
-        .set(browserMsg)
-        .end((err1, res1) => {
-          console.log("Login index");
-          if (err1) {
-            console.log("err1", err1);
-          } else {
-            superagent
-              .get(urls.codeUrl)
-              .set(browserMsg)
-              .set("Referer", urls.referer)
-              .buffer()
-              .parse(binaryParser)
-              .end(function (err, req) {
-                if (err) {
-                  console.log("code error", err);
-                  return;
-                }
-                codeCookie = req.header["set-cookie"];
-                if (codeCookie) {
-                  checkCode = codeCookie[4];
-                  console.log("codeCookie", codeCookie);
-                }
-                v.checkCode = checkCode;
-                console.log("checkCode", v.checkCode);
-                fs.writeFile(
-                  path.join(__dirname) + "/codes/01/code.jpg",
-                  req.body,
-                  function (err2) {
-                    console.log(1);
-                    if (err2) return console.error(err2);
-                    v.codeSrc = "./codes/01/code.jpg?v" + Math.random();
-                    console.log(v.codeSrc);
-                  }
-                );
-              });
+      axios
+        .get("http://139.196.138.6:7001/auth/validateCode")
+        .then((response) => {
+          if (response.status === 200 && response.data.code === 0) {
+            v.loginForm.checkcode = response.data.data.checkCode;
+            v.validateCode(response.data.data.imgData);
           }
+        })
+        .catch(function (error) {
+          // 请求失败处理
+          console.log(error);
         });
     },
     doLogin() {
       let v = this;
       if (
-        v.loginForm.name == "" ||
-        v.loginForm.pass == "" ||
-        v.loginForm.code == ""
+        v.loginForm.username == "" ||
+        v.loginForm.password == "" ||
+        v.loginForm.validatecode == ""
       ) {
         alert("请输入");
       } else {
-        console.log("pass", hex_md5(v.loginForm.pass));
-        console.log(" v.checkCode", v.checkCode);
-        ipcRenderer.send("api", {
-          type: "login",
-          payload: {
-            name: v.loginForm.name,
-            pass: hex_md5(v.loginForm.pass),
-            input_code: v.loginForm.code,
-            checkCode: v.checkCode,
-          },
-        });
+        console.log(v.loginForm);
+        axios
+          .post(
+            "http://139.196.138.6:7001/auth/doLogin",
+            qs.stringify(v.loginForm)
+          )
+          .then((response) => {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
       }
     },
   },
