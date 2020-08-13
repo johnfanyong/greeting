@@ -94,16 +94,56 @@ new Vue({
             qs.stringify(v.loginForm)
           )
           .then((response) => {
-            console.log(response);
+            v.token = response.data.data.cookie;
           })
           .catch(function (error) {
             console.log(error);
           });
       }
     },
+    loadConfig() {
+      let v = this;
+      axios
+        .get("http://139.196.138.6:7001/cfg/rules?sitekey=sd7799")
+        .then((response) => {
+          if (response.status === 200 && response.data.code === 0) {
+            let rules = response.data.data;
+            sessionStorage.setItem("rules", JSON.stringify(rules));
+          }
+        })
+        .catch(function (error) {
+          // 请求失败处理
+          console.log(error);
+        });
+    },
+    doBet() {
+      let v = this;
+      axios
+        .post(
+          "http://139.196.138.6:7001/bet/dobet",
+          qs.stringify({
+            sitekey: "sd7799",
+            gameid: 80,
+            token: v.token,
+            info: JSON.stringify([
+              {
+                playid: "8014101",
+                money: 1,
+              },
+            ]),
+          })
+        )
+        .then((response) => {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    },
   },
   mounted() {
     this.loadImageCode();
+    this.loadConfig();
   },
 });
 
